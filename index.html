@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A collection of generative art outputs, base64 encoded as BITCOIN STAMPS. For more info see https://stampchain.io/">
+    <meta name="author" content="Obi">
+    <title>PixelStamps - by Obi</title>
+    
+    <meta property="og:title" content="PixelStamps - by Obi">
+    <meta property="og:url" content="https://crypt0biwan.github.io/PixelStamps/">
+    <meta property="og:description" content="A collection of generative art outputs, base64 encoded as BITCOIN STAMPS. For more info see https://stampchain.io/">
+    <meta property="og:image" content="https://crypt0biwan.github.io/PixelStamps/assets/pixelstamp-big.png">
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PixelStamps - by Obi" />
+    <meta name="twitter:description" content="A collection of generative art outputs, base64 encoded as BITCOIN STAMPS. For more info see https://stampchain.io/" />
+    <meta name="twitter:site" content="@crypt0biwan" />
+    <meta name="twitter:creator" content="@crypt0biwan" />
+    <meta name="twitter:image" content="https://crypt0biwan.github.io/PixelStamps/assets/pixelstamp-big.png">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+        
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .pixel-image {
+            image-rendering: pixelated;
+            border: 10px solid #fff;
+        }
+    </style>
+    
+    
+</head>
+<body>
+ 
+    <main>
+        <section class="pt-3 pt-sm-5 pb-2 text-center container">
+            <div class="row py-lg-3">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">PixelStamps</h1>
+
+                    <p class="lead text-muted">
+                        A collection of generative art outputs, base64 encoded as "BITCOIN STAMPS". For more info see <a target="_blank" href="https://stampchain.io/">https://stampchain.io/</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="album py-5">
+            <div class="container">
+                <div id="artwork" class="row row-cols-1 row-cols-md-2 g-4">
+                </div>
+            </div>
+        </div>
+
+    </main>
+    
+    <footer class="text-muted py-5 bg-light">
+        <div class="container">
+            <p class="mb-0">
+                <a class="text-muted" target="_blank" href="https://twitter.com/crypt0biwan">Contact Obi on Twitter</a>
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        const total = 30
+
+        const generate_overview = (target) => {
+            let html = ``
+            let index = 0
+
+            for(let i=1; i<=total; i++) {
+                index = i < 10 ? `0${i}` : i
+
+                html += `<div class="col sm-1 mb-3">
+                    <div class="card shadow-sm">
+                        <img class="card-img-top pixel-image" src="img/${index}.png" alt="Hash TODO">
+
+                        <div class="card-body text-white bg-black">
+                            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center">
+                                <small class="">ID: ${index}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+            }
+
+            target.innerHTML = html
+        }
+
+        generate_overview(document.getElementById('artwork'))
+    </script>
+</body>
+</html>
