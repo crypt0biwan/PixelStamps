@@ -144,52 +144,62 @@
                 {
                     asset: 'A16524706979681176000',
                     tx_hash: '278240e2d409ea0a943588bed522fe891bc18bcd8f3be870d0ad3452d3850d13',
-                    stamp: 2232
+                    stamp: 2232,
+                    dispenser: 'a6f6694e5aa00bfa92ab1e98142800ab070f13b66a5c61826168f258124061f7'
                 },
                 {
                     asset: 'A1408405883346048000',
                     tx_hash: '62f89b42babe5946d75716686224639fcbde1e9fe9531a6050828c1074324f6f',
-                    stamp: 2233
+                    stamp: 2233,
+                    dispenser: '9569ba4013bb026e9da14c365f1df4bc01bb7a3bb2f5391fcf65e6f9358990c7'
                 },
                 {
                     asset: 'A12253769795084384000',
                     tx_hash: '7332176427ae204d67d5d82bf42fe7f6b4560a250b903fd6c05b82eb99751c5d',
-                    stamp: 2305
+                    stamp: 2305,
+                    dispenser: '33aaed6bbf3e81aba82235d1f8ead17b06775ffc56b22e2c5d88e5986ec4e896'
                 },
                 {
                     asset: 'A8703675216567439000',
                     tx_hash: '2d818c68ed63c7c79f3d6b6fc5dbcce9a7cb3fcc182fac681a24be8a1e91c072',
-                    stamp: 2306
+                    stamp: 2306,
+                    dispenser: 'f9e8133c498e089b5dea9e1bd11e29b438fb4a0b273012de2c0768f49d8c6bd6'
                 },
                 {
                     asset: 'A14974857133838789000',
                     tx_hash: '69e966cb221329995bed51bd648b929e659db35bc54be8d42e90d2004f099342',
-                    stamp: 2307
+                    stamp: 2307,
+                    dispenser: '7d5d8d9359ed97b0d29ccf9826a492a040f63cc6bb7da5f9a1874c0ddc36175d'
                 },
                 {
                     asset: 'A16662008837627302000',
                     tx_hash: '9fc7451f64f422c1f5e4e0e4933e9f1c61babe4ce54709cd8875940c7f734ae1',
-                    stamp: 2308
+                    stamp: 2308,
+                    dispenser: 'c19503f214bbbbba00425cb091720d0962aa6a9f344ebf94f95178b50d8d334a'
                 },
                 {
                     asset: 'A13228244656616886000',
                     tx_hash: 'f56cd2892df4874350bb704a979b5f680b9c477ae40663936e4c914348ac5e4a',
-                    stamp: 2309
+                    stamp: 2309,
+                    dispenser: 'd4c6645e87d508ad632ed049523e838978b703a12e9ee34a8fdf0dba335e3cd9'
                 },
                 {
                     asset: 'A13558575002450086000',
                     tx_hash: 'ab97eca020c32edc8a858cda28fafd7eb76e8a9496a7be53e4c2d19189643346',
-                    stamp: 2310
+                    stamp: 2310,
+                    dispenser: '618bb686d4c6b96feae6ab41c117db32776908a08ae13d78e67808cac17b055f'
                 },
                 {
                     asset: 'A7598620212387054000',
                     tx_hash: 'bc9d84ad5fa76007fbc87edd8f27b73d122f8ed67919e87c7d0ea24f2476dac6',
-                    stamp: 2311
+                    stamp: 2311,
+                    dispenser: 'f98f10e151c06283db0e2593f9ea3a6f7228fbf6125ba232d108f771b177f5ec'
                 },
                 {
                     asset: 'A4982466118577345000',
                     tx_hash: 'bba7ec5f50f3b7d2ec02d786a6e769bd741c3785f1b00c0462d41e648910ba37',
-                    stamp: 2312
+                    stamp: 2312,
+                    dispenser: 'e7a8ca109806c99b3c1f10f2a1fe85561f3070909ca42a9b5f6e2fd5bbec5520'
                 },
                 {
                     asset: 'A326147203456451900',
@@ -234,18 +244,31 @@
 
                 for(let i=0; i<artworks.length; i++) {
                     // index = i < 10 ? `0${i}` : i
-                    let { asset, tx_hash, stamp } = artworks[i]
+                    let { asset, tx_hash, stamp, dispenser } = artworks[i]
 
                     html += `<div class="col sm-1 mb-3">
                         <div class="card bg-black shadow-sm">
                             <img class="card-img-top pixel-image" src="img/${tx_hash}.png" alt="Hash TODO">
 
                             <div class="card-body text-white bg-black">
-                                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center mb-3">
-                                    <a class="btn btn-sm mb-2 mb-sm-0 btn-outline-light" target="_blank" href="https://xchain.io/asset/${asset}" alt="view on xchain">${asset}</a>
-                                </div>
+                    `
 
-                                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center">
+                    
+                    if(dispenser) {
+                        html += `
+                            <div class="d-grid mb-3">
+                                <a class="btn btn-sm mb-2 mb-sm-0 btn-success" target="_blank" href="https://xchain.io/tx/${dispenser}">Buy from dispenser</a>
+                            </div>
+                            `
+                    } else {
+                        html += `
+                            <div class="d-grid mb-3">
+                                <a class="btn btn-sm mb-2 mb-sm-0 btn-outline-light" target="_blank" href="https://xchain.io/asset/${asset}" alt="view on xchain">View on xchain</a>
+                            </div>
+                        `
+                    }
+
+                    html += `   <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center">
                                     <a class="btn btn-sm mb-2 mb-sm-0 btn-outline-light" target="_blank" href="https://stampchain.io/asset.html?stampNumber=${stamp}">View on stampchain</a>
 
                                     <small class="">Stamp index: ${stamp}</small>
